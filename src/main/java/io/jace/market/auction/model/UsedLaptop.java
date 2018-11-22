@@ -19,15 +19,15 @@ public final class UsedLaptop extends AbstractGoods {
     private final UUID id;
 
     @NotBlank
-    @Column(name = "serial_no")
+    @Column(name = "serial_no", nullable = false)
     private String serialNo;
 
     @NotBlank
-    @Column(name = "manufacturer")
+    @Column(name = "manufacturer", nullable = false)
     private String manufacturer;
 
     @NotBlank
-    @Column(name = "model")
+    @Column(name = "model", nullable = false)
     private String model;
 
     public UsedLaptop() {

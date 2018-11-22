@@ -2,26 +2,38 @@ package io.jace.market.auction.model;
 
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
+@Getter
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractMarketSales extends BaseEntity {
 
-    @Getter
     @Id
     private final UUID id;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private Seller seller;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "goods_id")
+    private AbstractGoods goods;
 
     public AbstractMarketSales() {
         super();
         this.id = UUID.randomUUID();
     }
 
-    public abstract Seller getSeller();
-    public abstract AbstractGoods getGoods();
+    public AbstractMarketSales(@Valid @NotNull Seller seller, @Valid @NotNull AbstractGoods goods) {
+        this();
+        this.seller = seller;
+        this.goods = goods;
+    }
 
 }

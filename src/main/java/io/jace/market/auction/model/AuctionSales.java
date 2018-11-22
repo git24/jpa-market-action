@@ -2,9 +2,13 @@ package io.jace.market.auction.model;
 
 import lombok.Getter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,46 +17,25 @@ import java.util.Set;
 public final class AuctionSales extends AbstractMarketSales implements AuctionExecutor {
 
     @NotNull
-    @ManyToOne
-    @JoinColumn(name = "seller_id")
-    private Seller seller;
-
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "goods_id")
-    private AbstractGoods goods;
-
-    @NotNull
     @OneToMany(mappedBy = "auctionSales")
     private Set<Bidding> biddings;
 
     @Getter
     @Column(name = "started_at")
-    private Instant startedAt;
+    private LocalDateTime startedAt;
 
     @Getter
     @Column(name = "closed_at")
-    private Instant closedAt;
+    private LocalDateTime closedAt;
 
     public AuctionSales() {
         super();
         this.biddings = new HashSet<>();
     }
 
-    public AuctionSales(Seller seller, AbstractGoods goods) {
-        this();
-        this.seller = seller;
-        this.goods = goods;
-    }
-
-    @Override
-    public Seller getSeller() {
-        return this.seller;
-    }
-
-    @Override
-    public AbstractGoods getGoods() {
-        return this.goods;
+    public AuctionSales(@Valid @NotNull Seller seller, @Valid @NotNull AbstractGoods goods) {
+        super(seller, goods);
+        this.biddings = new HashSet<>();
     }
 
     @Override
@@ -62,19 +45,19 @@ public final class AuctionSales extends AbstractMarketSales implements AuctionEx
 
     @Override
     public boolean startBidding() {
-        if (startedAt == null) {
+        if (startedAt != null) {
             return false;
         }
-        startedAt = Instant.now();
+        startedAt = LocalDateTime.now();
         return true;
     }
 
     @Override
     public boolean closeBidding() {
-        if (closedAt == null) {
+        if (closedAt != null) {
             return false;
         }
-        closedAt = Instant.now();
+        closedAt = LocalDateTime.now();
         return true;
     }
 }

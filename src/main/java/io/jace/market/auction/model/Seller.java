@@ -18,11 +18,11 @@ public final class Seller extends BaseEntity {
     private String username;
 
     @NotBlank
-    @Column(name = "nickname")
+    @Column(name = "nickname", nullable = false)
     private String nickname;
 
     @NotBlank
-    @Column(name = "cellphone")
+    @Column(name = "cellphone", nullable = false)
     private String cellphone;
 
     public Seller() {

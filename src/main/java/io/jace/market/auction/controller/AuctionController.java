@@ -1,39 +1,16 @@
-package io.jace.market.auction.product.controller;
+package io.jace.market.auction.controller;
 
-import io.jace.market.auction.product.model.Product;
-import io.jace.market.auction.product.model.dto.ProductRequest;
-import io.jace.market.auction.product.model.dto.ProductResponse;
-import io.jace.market.auction.product.service.ProductService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import io.jace.market.auction.service.AuctionService;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ProductController {
+public class AuctionController {
 
-    private final ProductService productService;
+    private final AuctionService auctionService;
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
+    public AuctionController(AuctionService auctionService) {
+        this.auctionService = auctionService;
     }
 
-    @GetMapping("/products")
-    public ResponseEntity<List<ProductResponse>> findAll() {
-        return ResponseEntity.ok(productService.findAll().stream()
-        .map(ProductResponse::new)
-        .collect(Collectors.toList()));
-    }
-
-    @PostMapping("/products")
-    public ResponseEntity<UUID> createProduct(
-            @RequestBody @Valid ProductRequest productRequest
-    ) {
-        UUID id = productService.save(new Product(productRequest.getName()));
-        return ResponseEntity.ok(id);
-    }
 
 }

@@ -3,6 +3,7 @@ package io.jace.market.auction.model;
 import lombok.Getter;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
@@ -16,7 +17,7 @@ public final class Bidding extends BaseEntity {
     private final UUID id;
 
     @NotNull
-    @Column(name = "amount")
+    @Column(name = "amount", nullable = false)
     private Long amount;
 
     @NotNull
@@ -36,8 +37,8 @@ public final class Bidding extends BaseEntity {
 
     public Bidding(
             @NotNull Long amount,
-            @NotNull Bidder bidder,
-            @NotNull AuctionSales auctionSales
+            @Valid @NotNull Bidder bidder,
+            @Valid @NotNull AuctionSales auctionSales
     ) {
         this();
         this.amount = amount;

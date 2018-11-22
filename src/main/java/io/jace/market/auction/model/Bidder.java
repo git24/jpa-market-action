@@ -18,7 +18,7 @@ public final class Bidder extends BaseEntity {
     private String username;
 
     @NotBlank
-    @Column(name = "cellphone")
+    @Column(name = "cellphone", nullable = false)
     private String cellphone;
 
     public Bidder() {
