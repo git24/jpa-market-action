@@ -25,7 +25,7 @@ public final class Seller extends BaseEntity {
     @Column(name = "cellphone", nullable = false)
     private String cellphone;
 
-    public Seller() {
+    protected Seller() {
         super();
     }
 

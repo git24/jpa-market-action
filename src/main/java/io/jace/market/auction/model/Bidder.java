@@ -21,7 +21,7 @@ public final class Bidder extends BaseEntity {
     @Column(name = "cellphone", nullable = false)
     private String cellphone;
 
-    public Bidder() {
+    protected Bidder() {
         super();
     }
 

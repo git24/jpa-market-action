@@ -16,7 +16,7 @@ public abstract class AbstractGoods extends BaseEntity implements CorrectGoodsVa
     @Id
     private final UUID id;
 
-    public AbstractGoods() {
+    protected AbstractGoods() {
         super();
         this.id = UUID.randomUUID();
     }

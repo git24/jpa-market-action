@@ -30,7 +30,7 @@ public final class Bidding extends BaseEntity {
     @JoinColumn(name = "auction_sales_id")
     private AuctionSales auctionSales;
 
-    public Bidding() {
+    protected Bidding() {
         super();
         this.id = UUID.randomUUID();
     }

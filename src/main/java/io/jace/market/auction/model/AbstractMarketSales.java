@@ -25,7 +25,7 @@ public abstract class AbstractMarketSales extends BaseEntity {
     @JoinColumn(name = "goods_id")
     private AbstractGoods goods;
 
-    public AbstractMarketSales() {
+    protected AbstractMarketSales() {
         super();
         this.id = UUID.randomUUID();
     }

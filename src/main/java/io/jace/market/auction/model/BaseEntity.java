@@ -11,9 +11,9 @@ public abstract class BaseEntity {
 
     @Getter
     @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
+    private final LocalDateTime createdAt;
 
-    public BaseEntity() {
+    protected BaseEntity() {
         createdAt = LocalDateTime.now();
     }
 }

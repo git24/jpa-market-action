@@ -30,7 +30,7 @@ public final class UsedLaptop extends AbstractGoods {
     @Column(name = "model", nullable = false)
     private String model;
 
-    public UsedLaptop() {
+    protected UsedLaptop() {
         super();
         this.id = UUID.randomUUID();
     }

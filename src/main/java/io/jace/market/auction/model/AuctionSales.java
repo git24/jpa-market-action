@@ -28,7 +28,7 @@ public final class AuctionSales extends AbstractMarketSales implements AuctionEx
     @Column(name = "closed_at")
     private LocalDateTime closedAt;
 
-    public AuctionSales() {
+    protected AuctionSales() {
         super();
         this.biddings = new HashSet<>();
     }
