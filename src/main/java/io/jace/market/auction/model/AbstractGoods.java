@@ -10,9 +10,8 @@ import java.util.UUID;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class AbstractGoods extends BaseEntity implements CorrectGoodsValidator {
+public abstract class AbstractGoods extends BaseEntity {
 
-    @Getter
     @Id
     private final UUID id;
 

@@ -14,7 +14,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "auction_sales")
-public final class AuctionSales extends AbstractMarketSales implements AuctionExecutor {
+public final class AuctionSales extends AbstractMarketSales {
 
     @NotNull
     @OneToMany(mappedBy = "auctionSales")
@@ -38,12 +38,10 @@ public final class AuctionSales extends AbstractMarketSales implements AuctionEx
         this.biddings = new HashSet<>();
     }
 
-    @Override
     public void addBidding(Bidding bidding) {
         biddings.add(bidding);
     }
 
-    @Override
     public boolean startBidding() {
         if (startedAt != null) {
             return false;
@@ -52,7 +50,6 @@ public final class AuctionSales extends AbstractMarketSales implements AuctionEx
         return true;
     }
 
-    @Override
     public boolean closeBidding() {
         if (closedAt != null) {
             return false;

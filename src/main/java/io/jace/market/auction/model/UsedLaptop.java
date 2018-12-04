@@ -46,8 +46,4 @@ public final class UsedLaptop extends AbstractGoods {
         this.model = model;
     }
 
-    @Override
-    public boolean validate() {
-        return true;
-    }
 }

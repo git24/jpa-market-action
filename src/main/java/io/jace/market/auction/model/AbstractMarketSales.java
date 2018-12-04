@@ -1,13 +1,10 @@
 package io.jace.market.auction.model;
 
-import lombok.Getter;
-
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-@Getter
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractMarketSales extends BaseEntity {

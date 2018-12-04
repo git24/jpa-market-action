@@ -5,6 +5,7 @@ import lombok.Getter;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.util.UUID;
 
 @Getter
@@ -17,8 +18,9 @@ public final class Bidding extends BaseEntity {
     private final UUID id;
 
     @NotNull
-    @Column(name = "amount", nullable = false)
-    private Long amount;
+    @Positive
+    @Column(name = "price", nullable = false)
+    private Long price;
 
     @NotNull
     @ManyToOne
@@ -36,12 +38,12 @@ public final class Bidding extends BaseEntity {
     }
 
     public Bidding(
-            @NotNull Long amount,
+            @NotNull @Positive Long price,
             @Valid @NotNull Bidder bidder,
             @Valid @NotNull AuctionSales auctionSales
     ) {
         this();
-        this.amount = amount;
+        this.price = price;
         this.bidder = bidder;
         this.auctionSales = auctionSales;
     }

@@ -28,11 +28,11 @@ public class AuctionApplication {
 			usedLaptopRepository.save(usedLaptop1);
 			usedLaptopRepository.save(usedLaptop2);
 
-			Seller seller = new Seller("111123", "Tester", "010-1111-2222");
+			Seller seller = new Seller("Tester", "010-1111-2222");
 			sellerRepository.save(seller);
 
-			Bidder bidder1 = new Bidder("222223", "010-2222-3333");
-			Bidder bidder2 = new Bidder("222224", "010-2222-4444");
+			Bidder bidder1 = new Bidder("010-2222-3333");
+			Bidder bidder2 = new Bidder("010-2222-4444");
 			bidderRepository.save(bidder1);
 			bidderRepository.save(bidder2);
 
