@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Getter
 @Entity
-@Table(name = "used_laptop")
+@Table(name = "used_laptop", schema = "auction")
 public final class UsedLaptop extends AbstractGoods {
 
     @Id

@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 
 @Getter
 @Entity
-@Table(name = "bidder")
+@Table(name = "bidder", schema = "auction")
 public final class Bidder extends AbstractUser {
 
     protected Bidder() {

@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Getter
 @Entity
-@Table(name = "bidding")
+@Table(name = "bidding", schema = "auction")
 public final class Bidding extends BaseEntity {
 
     @Id

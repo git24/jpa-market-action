@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 
 @Getter
 @Entity
-@Table(name = "seller")
+@Table(name = "seller", schema = "auction")
 public final class Seller extends AbstractUser {
 
     @NotBlank(message = "nickname must not be blank")

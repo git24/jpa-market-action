@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "auction_sales")
+@Table(name = "auction_sales", schema = "auction")
 public final class AuctionSales extends AbstractMarketSales {
 
     @NotNull
